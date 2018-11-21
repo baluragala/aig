@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./App.css";
+import Header from "./Header";
+import Footer from "./Footer";
 
 class App extends React.Component {
   constructor() {
@@ -17,16 +19,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "lightblue", border: "1px solid green" }}>
-        <p>{1 + 2}</p>
-        <p>{"hello".toUpperCase()}</p>
-        <p>{this.getMessage()}</p>
-        <p>{1 > 10 ? "yes" : "no"}</p>
-        <ul>
-          {this.fruits.map(f => (
-            <li className="item">{f}</li>
-          ))}
-        </ul>
+      <div>
+        <div>
+          <Header />
+        </div>
+        <div>
+          <Footer />
+        </div>
       </div>
     );
   }
