@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./App.css";
 import Header from "./Header";
 import Footer from "./Footer";
+import ProductList from "./components/ProductList";
 
 class App extends React.Component {
   constructor() {
@@ -23,6 +24,7 @@ class App extends React.Component {
         <div>
           <Header />
         </div>
+        <ProductList />
         <div>
           <Footer />
         </div>
