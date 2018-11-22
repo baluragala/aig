@@ -13,6 +13,16 @@ export default function productReducer(
           { id: 4, title: "Note 9", price: 900, stock: 8 }
         ]
       };
+    case "SELL":
+      let { products } = prevState;
+      let index = products.findIndex(p => p.id === action.id);
+      let productToUpdate = { ...products[index] };
+      productToUpdate.stock--;
+      products.splice(index, 1);
+      products.splice(index, 0, productToUpdate);
+      return {
+        products: [...products]
+      };
     default:
       return prevState;
   }

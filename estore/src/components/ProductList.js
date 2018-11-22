@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ProductListItem from "./ProductListItem";
 import { connect } from "react-redux";
-import { getProductsAction } from "../actions/product";
+import { getProductsAction, getSaleAction } from "../actions/product";
 
 class ProductList extends Component {
   constructor() {
@@ -11,13 +11,7 @@ class ProductList extends Component {
   }
 
   handleSellClick = id => {
-    // let { products } = this.state;
-    // let index = products.findIndex(p => p.id === id);
-    // let productToUpdate = { ...products[index] };
-    // productToUpdate.stock--;
-    // products.splice(index, 1);
-    // products.splice(index, 0, productToUpdate);
-    // this.setState({ products: products });
+    this.props.dispatch(getSaleAction(id));
   };
 
   _renderProducts() {
