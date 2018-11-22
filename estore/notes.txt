@@ -22,3 +22,27 @@ Redux
 1. Single Source of thruth - store
 2. State is readonly - immutabl
 3. changes must be made with pure functions - reducers
+
+
+
+React Redux
+-----------
+Provider -> ProductList
+
+
+GlobalState = {
+  subState1:{},
+  subState2:{}
+}
+
+
+mapStateToProps
+
+map state to props
+
+mapDispatchToProps
+
+map dispatch to props
+
+
+
