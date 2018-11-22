@@ -18,12 +18,13 @@ class ProductList extends Component {
   handleSellClick = id => {
     let item = this.state.products.find(p => p.id === id);
     item.stock--;
+    //console.log(this.state.products);
     this.setState({ products: this.state.products });
   };
 
   _renderProducts() {
     return this.state.products.map(p => (
-      <ProductListItem product={p} onSale={this.handleSellClick} />
+      <ProductListItem product={p} onSale={this.handleSellClick} key={p.id} />
     ));
   }
 
