@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.js"></script>
+  </head>
+  <body>
+    <button id="inc">INC</button> <button id="dec">DEC</button>
+    <h1 id="r"></h1>
+    <script>
+      document.querySelector("#inc").addEventListener("click", function() {
+        store.dispatch(incAction);
+      });
+      document.querySelector("#dec").addEventListener("click", function() {
+        store.dispatch(decAction);
+      });
+
+      // 1. plan actions
+      // 2. code reducers
+      // 3. create store
+
+      const incAction = { type: "INC", by: 5 };
+      const decAction = { type: "DEC", by: 5 };
+
+      function counterReducer(prevState = { counter: 0 }, action) {
+        console.log(action);
+        switch (action.type) {
+          case "INC":
+            return { counter: prevState.counter + action.by };
+          case "DEC":
+            return { counter: prevState.counter - action.by };
+          default:
+            return prevState;
+        }
+      }
+
+      const store = Redux.createStore(counterReducer);
+      console.log(store.getState());
+      store.subscribe(function() {
+        console.log(store.getState());
+        document.querySelector("#r").innerHTML = store.getState().counter;
+      });
+
+      store.dispatch(incAction);
+      store.dispatch(incAction);
+      store.dispatch(incAction);
+      store.dispatch(decAction);
+    </script>
+  </body>
+</html>
