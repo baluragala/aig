@@ -8,6 +8,7 @@ class AddProduct extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.setRef = this.setRef.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     console.log("ele", document.querySelectorAll("input")[0]);
   }
 
@@ -21,6 +22,11 @@ class AddProduct extends Component {
     console.dir(ref);
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(this.state, this.priceRef.value);
+  }
+
   render() {
     console.log("render-AddProduct");
     return (
@@ -29,13 +35,14 @@ class AddProduct extends Component {
         <button onClick={() => (this.priceRef.value = Math.random())}>
           SET
         </button>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             value={this.state.title}
             onChange={this.handleChange}
           />
           <input type="number" ref={this.setRef} />
+          <button type="submit">Save</button>
         </form>
       </div>
     );
