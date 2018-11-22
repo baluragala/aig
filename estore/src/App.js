@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import ProductList from "./components/ProductList";
+import AddProduct from "./components/AddProduct";
 
 class App extends React.Component {
   constructor() {
@@ -24,6 +25,7 @@ class App extends React.Component {
         <div>
           <Header />
         </div>
+        <AddProduct />
         <ProductList />
         <div>
           <Footer />
