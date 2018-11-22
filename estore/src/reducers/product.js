@@ -5,6 +5,7 @@ export default function productReducer(
   },
   action
 ) {
+  console.log(action.type);
   switch (action.type) {
     case "GET_PRODUCTS":
       return {

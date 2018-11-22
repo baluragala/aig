@@ -1,4 +1,4 @@
-import { put, takeLatest } from "redux-saga/effects";
+import { put, takeLatest, takeEvery, throttle } from "redux-saga/effects";
 import {
   getProductsSuccessAction,
   getProductsFailureAction
@@ -16,5 +16,5 @@ function* getProductsFromApi() {
 }
 
 export function* productWatcher() {
-  yield takeLatest("GET_PRODUCTS", getProductsFromApi);
+  yield throttle(1500, "GET_PRODUCTS", getProductsFromApi);
 }

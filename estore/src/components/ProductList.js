@@ -39,7 +39,7 @@ class ProductList extends Component {
     return (
       <div>
         <h2>Products</h2>
-        {this.props.isLoading && <h3>Please wait...</h3>}
+        {/*this.props.isLoading && <h3>Please wait...</h3>*/}
         <button onClick={() => this.props.dispatch(getProductsAction())}>
           GET PRODUCTS
         </button>
