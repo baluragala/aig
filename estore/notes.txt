@@ -1,0 +1,16 @@
+3 phases
+
+1. Mounting
+  constructor
+                  --getDerivedStateFromProps(rarely used - caution)
+  render
+  componentDidMount
+   
+2. Updating
+      --getDerivedStateFromProps(rarely used - caution)
+      --shoudlComonentUpdate(rarely used - caution)
+    render
+    componentDidUpdate
+
+3. Unmounting
+    componentWillUnmount

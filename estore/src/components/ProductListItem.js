@@ -1,16 +1,32 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 
-class ProductListItem extends Component {
+class ProductListItem extends PureComponent {
   constructor() {
     super();
     //this.handleClick = this.handleClick.bind(this);
+    console.log("constructor");
   }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("componentDidUpdate");
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return nextProps.product.stock != this.props.product.stock;
+  // }
 
   handleClick = () => {
     this.props.onSale(this.props.product.id);
   };
   render() {
-    console.log("render-product list item");
+    console.log("render");
     const { title, stock, price } = this.props.product;
     return (
       <div>
