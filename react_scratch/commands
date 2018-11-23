@@ -1,0 +1,10 @@
+npm i webpack webpack-cli -D
+
+npm run build:dev
+
+npm run build:prod
+
+
+//react ssetup
+npm i react react-dom
+ npm i babel-core babel-loader babel-preset-env babel-preset-react html-webpack-plugin webpack-dev-server -D
