@@ -17,7 +17,7 @@ class ProductList extends Component {
   _renderProducts() {
     let items = [];
     for (let p of this.props.products) {
-      if (p.stock > 0) {
+      if (p.get("stock") > 0) {
         items.push(
           <ProductListItem
             product={p}
@@ -50,8 +50,9 @@ class ProductList extends Component {
 }
 
 function mapStateToProps(wholeApplicationState) {
+  console.log(wholeApplicationState.productState.get("products"));
   return {
-    products: wholeApplicationState.productState.products,
+    products: wholeApplicationState.productState.get("products"),
     isLoading: wholeApplicationState.productState.isLoading
   };
 }

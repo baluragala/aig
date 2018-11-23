@@ -1,39 +1,39 @@
+import { Map, List, fromJS } from "immutable";
+
 export default function productReducer(
-  prevState = {
-    products: [],
+  prevState = Map({
+    products: List(),
     isLoading: false
-  },
+  }),
   action
 ) {
   console.log(action.type);
   switch (action.type) {
     case "GET_PRODUCTS":
-      return {
-        ...prevState,
-        isLoading: true
-      };
+      return prevState.set("isLoading", true);
     case "GET_PRODUCTS_SUCCESS":
-      return {
-        ...prevState,
-        isLoading: false,
-        products: action.products
-      };
+      //return prevState.set("isLoading", false).set("products", action.products);
+
+      return prevState.withMutations(map => {
+        map.set("isLoading", false);
+        map.set("products", fromJS(action.products));
+      });
+
     case "GET_PRODUCTS_FAILURE":
-      return {
-        ...prevState,
-        isLoading: false,
-        error: action.error
-      };
+      return prevState.withMutations(map => {
+        map.set("isLoading", false);
+        map.set("error", action.error);
+      });
     case "SELL":
-      let { products } = prevState;
+      let products = prevState.get("products").toJS();
       let index = products.findIndex(p => p.id === action.id);
       let productToUpdate = { ...products[index] };
       productToUpdate.stock--;
-      products.splice(index, 1);
-      products.splice(index, 0, productToUpdate);
-      return {
-        products: [...products]
-      };
+      let updatedProducts = prevState
+        .get("products")
+        .set(index, Map(productToUpdate));
+      console.log("updatedProducts", updatedProducts.toJS());
+      return prevState.set("products", updatedProducts);
     default:
       return prevState;
   }

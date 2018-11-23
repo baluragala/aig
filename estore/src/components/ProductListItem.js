@@ -23,11 +23,11 @@ class ProductListItem extends PureComponent {
   // }
 
   handleClick = () => {
-    this.props.onSale(this.props.product.id);
+    this.props.onSale(this.props.product.get("id"));
   };
   render() {
     console.log("render");
-    const { title, stock, price } = this.props.product;
+    const { title, stock, price } = this.props.product.toJS();
     return (
       <div>
         <h2>
