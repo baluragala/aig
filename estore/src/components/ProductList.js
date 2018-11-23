@@ -22,7 +22,7 @@ class ProductList extends Component {
           <ProductListItem
             product={p}
             onSale={this.handleSellClick}
-            key={p.id}
+            key={p.get("id")}
           />
         );
       }
