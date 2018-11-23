@@ -1,5 +1,6 @@
 import React, { Component, PureComponent } from "react";
-
+import { Link } from "react-router-dom";
+import { stringify } from "query-string";
 class ProductListItem extends PureComponent {
   constructor() {
     super();
@@ -27,11 +28,13 @@ class ProductListItem extends PureComponent {
   };
   render() {
     console.log("render");
-    const { title, stock, price } = this.props.product.toJS();
+    const { title, stock, price, id } = this.props.product.toJS();
     return (
       <div>
         <h2>
-          {title}({stock})
+          <Link to={`/products/${id}?${stringify({ related: true })}`}>
+            {title}({stock})
+          </Link>
         </h2>
         <h4>{price}</h4>
         <button onClick={this.handleClick}>Sell</button>
