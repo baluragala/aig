@@ -51,8 +51,8 @@ class ProductList extends Component {
 
 function mapStateToProps(wholeApplicationState) {
   return {
-    products: wholeApplicationState.products,
-    isLoading: wholeApplicationState.isLoading
+    products: wholeApplicationState.productState.products,
+    isLoading: wholeApplicationState.productState.isLoading
   };
 }
 
