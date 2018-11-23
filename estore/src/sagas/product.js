@@ -11,6 +11,7 @@ function* getProductsFromApi() {
     );
     yield put(getProductsSuccessAction(products));
   } catch (e) {
+    console.log(e);
     yield put(getProductsFailureAction(e));
   }
 }

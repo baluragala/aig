@@ -15,7 +15,7 @@ class App extends React.Component {
     super();
     this.state = {
       message: "Vismaya welcomes you!!",
-      isLoggedIn: false
+      isLoggedIn: true
     };
     this.fruits = ["Apple", "Banana", "Chikoo"];
   }
