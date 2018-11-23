@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 
 class ProductDetail extends Component {
+  // componentDidMount() {
+  //   if (this.props.location.search) {
+  //     this.props.history.replace(
+  //       this.props.history.replace(this.props.location.pathname)
+  //     );
+  //   }
+  // }
+
   render() {
     return (
       <div>

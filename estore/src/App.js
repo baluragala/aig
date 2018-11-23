@@ -6,14 +6,16 @@ import Footer from "./Footer";
 import ProductList from "./components/ProductList";
 import AddProduct from "./components/AddProduct";
 import NavBar from "./components/NavBar";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import ProductDetail from "./components/ProductDetail";
+import Login from "./components/Login";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      message: "Vismaya welcomes you!!"
+      message: "Vismaya welcomes you!!",
+      isLoggedIn: false
     };
     this.fruits = ["Apple", "Banana", "Chikoo"];
   }
@@ -32,7 +34,15 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/products" component={ProductList} />
           <Route path="/products/add" component={AddProduct} />
-          <Route path="/products/:id" component={ProductDetail} />
+          <Route
+            path="/products/:id"
+            render={props => {
+              if (this.state.isLoggedIn)
+                return <ProductDetail {...props} additionalInfo="test" />;
+              else return <Redirect to="/login" />;
+            }}
+          />
+          <Route path="/login" component={Login} />
           <Route render={() => <h1>Page not found</h1>} />
         </Switch>
         <div>
