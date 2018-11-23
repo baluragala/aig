@@ -33,7 +33,8 @@ class ProductListItem extends PureComponent {
       <div>
         <h2>
           <Link to={`/products/${id}?${stringify({ related: true })}`}>
-            {title}({stock})
+            {title}
+            {stock}
           </Link>
         </h2>
         <h4>{price}</h4>

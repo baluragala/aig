@@ -21,6 +21,7 @@ describe("Product Reducer", () => {
       isLoading: false,
       products: testProducts
     };
+
     const state = productReducer(undefined, {
       type: "GET_PRODUCTS_SUCCESS",
       products: testProducts
