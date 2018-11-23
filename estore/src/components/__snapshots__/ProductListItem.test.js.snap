@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductListItem should pass snapshot 1`] = `
+<div>
+  <h2>
+    <Link
+      replace={false}
+      to="/products/1?related=true"
+    >
+      p1
+      20
+    </Link>
+  </h2>
+  <h4>
+    100
+  </h4>
+  <button
+    onClick={[Function]}
+  >
+    Sell
+  </button>
+</div>
+`;

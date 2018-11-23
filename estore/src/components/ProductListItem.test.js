@@ -5,6 +5,7 @@ import Adapter from "enzyme-adapter-react-16";
 import { Link } from "react-router-dom";
 import { Map } from "immutable";
 import { stringify } from "query-string";
+import { shallowToJson } from "enzyme-to-json";
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -49,5 +50,17 @@ describe("ProductListItem", () => {
       .simulate("click");
     expect(mockedClickHandler).toHaveBeenCalledTimes(1);
     expect(mockedClickHandler).toHaveBeenCalledWith(1);
+  });
+
+  it("should pass snapshot", () => {
+    const product = Map({
+      id: 1,
+      title: "p1",
+      price: 100,
+      stock: 20
+    });
+
+    const domWrapper = shallow(<ProductListItem product={product} />);
+    expect(shallowToJson(domWrapper)).toMatchSnapshot();
   });
 });

@@ -5,6 +5,7 @@
   "dependencies": {
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme-to-json": "^3.3.4",
     "immutable": "^4.0.0-rc.12",
     "query-string": "^6.2.0",
     "react": "^16.6.3",
