@@ -5,6 +5,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import ProductList from "./components/ProductList";
 import AddProduct from "./components/AddProduct";
+import NavBar from "./components/NavBar";
+import { Route } from "react-router-dom";
 
 class App extends React.Component {
   constructor() {
@@ -24,9 +26,10 @@ class App extends React.Component {
       <div>
         <div>
           <Header />
+          <NavBar />
         </div>
-        <AddProduct />
-        <ProductList />
+        <Route exact path="/products" component={ProductList} />
+        <Route path="/products/add" component={AddProduct} />
         <div>
           <Footer />
         </div>
