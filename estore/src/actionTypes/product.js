@@ -1,5 +1,6 @@
 export const CHANGE_TITLE = "CHANGE_TITLE";
 export const CHANGE_CATEGORY = "CHANGE_CATEGORY";
+export const CHANGE_STOCK = "CHANGE_STOCK";
 
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const ADD_PRODUCT_SUCCESS = "ADD_PRODUCT_SUCCESS";

@@ -3,7 +3,8 @@ import "./AddProduct.css";
 import {
   getCategoryChange,
   getTitleChange,
-  addProductAction
+  addProductAction,
+  getStockChange
 } from "../actions/product";
 import { connect } from "react-redux";
 
@@ -25,6 +26,10 @@ class AddProduct extends Component {
     if (e.target.name == "category") {
       this.props.dispatch(getCategoryChange(e.target.value));
     }
+
+    if (e.target.name == "stock") {
+      this.props.dispatch(getStockChange(e.target.value));
+    }
   }
 
   setRef(ref) {
@@ -39,6 +44,7 @@ class AddProduct extends Component {
       addProductAction({
         title: this.props.title,
         category: this.props.category,
+        stock: this.props.stock,
         price: this.priceRef.value
       })
     );
@@ -73,7 +79,13 @@ class AddProduct extends Component {
             <option value="GROCERY">GROCERY</option>
             <option value="CLOTHING">CLOTHING</option>
           </select>
-
+          <label htmlFor="stock">Product Stock</label>
+          <input
+            type="number"
+            name="stock"
+            value={this.props.stock}
+            onChange={this.handleChange}
+          />
           <input type="submit" value="Save" />
         </form>
       </div>
@@ -84,7 +96,8 @@ class AddProduct extends Component {
 function mapStateToProps(wholeApplicationState) {
   return {
     title: wholeApplicationState.productState.get("title"),
-    category: wholeApplicationState.productState.get("category")
+    category: wholeApplicationState.productState.get("category"),
+    stock: wholeApplicationState.productState.get("stock")
   };
 }
 

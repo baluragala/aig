@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./App.css";
+
 import Header from "./Header";
 import Footer from "./Footer";
 import ProductList from "./components/ProductList";
@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar";
 import { Route, Switch, Redirect } from "react-router-dom";
 import ProductDetail from "./components/ProductDetail";
 import Login from "./components/Login";
+import DataGrid from "./components/DataGrid";
 
 class App extends React.Component {
   constructor() {
@@ -43,6 +44,7 @@ class App extends React.Component {
             }}
           />
           <Route path="/login" component={Login} />
+          <Route path="/grid" component={DataGrid} />
           <Route render={() => <h1>Page not found</h1>} />
         </Switch>
         <div>

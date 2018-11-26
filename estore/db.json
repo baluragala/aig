@@ -28,6 +28,26 @@
       "title": "Note 9",
       "price": 900,
       "stock": 8
+    },
+    {
+      "title": "New Product",
+      "category": "200",
+      "price": "100",
+      "id": 5
+    },
+    {
+      "title": "Ipad Pro",
+      "category": "ELECTRONICS",
+      "stock": "20",
+      "price": "800",
+      "id": 6
+    },
+    {
+      "title": "Pixel 4",
+      "category": "ELECTRONICS",
+      "stock": "99",
+      "price": "900",
+      "id": 7
     }
   ]
 }

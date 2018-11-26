@@ -6,7 +6,8 @@ import {
   ADD_PRODUCT_SUCCESS,
   ADD_PRODUCT_FAILURE,
   DELETE_PRODUCT_SUCCESS,
-  DELETE_PRODUCT
+  DELETE_PRODUCT,
+  CHANGE_STOCK
 } from "../actionTypes/product";
 
 export default function productReducer(
@@ -50,6 +51,8 @@ export default function productReducer(
       return prevState.set("title", action.title);
     case CHANGE_CATEGORY:
       return prevState.set("category", action.category);
+    case CHANGE_STOCK:
+      return prevState.set("stock", action.stock);
     case ADD_PRODUCT:
       return prevState.set("isLoading", true);
     case ADD_PRODUCT_SUCCESS:

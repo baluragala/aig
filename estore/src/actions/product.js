@@ -5,7 +5,8 @@ import {
   ADD_PRODUCT_SUCCESS,
   ADD_PRODUCT_FAILURE,
   DELETE_PRODUCT,
-  DELETE_PRODUCT_SUCCESS
+  DELETE_PRODUCT_SUCCESS,
+  CHANGE_STOCK
 } from "../actionTypes/product";
 
 export function getProductsAction() {
@@ -29,6 +30,10 @@ export function getTitleChange(title) {
 
 export function getCategoryChange(category) {
   return { type: CHANGE_CATEGORY, category };
+}
+
+export function getStockChange(stock) {
+  return { type: CHANGE_STOCK, stock };
 }
 
 export function addProductAction(product) {
