@@ -6,8 +6,12 @@ import {
 
 function* getProductsFromApi() {
   try {
-    let products = yield fetch("http://localhost:4000/products").then(
+    let baseURL = yield fetch(`${window.location.origin}/config.json`).then(
       response => response.json()
+    );
+    console.log("baseURL", baseURL);
+    let products = yield fetch(`${baseURL.endpoint}/products`).then(response =>
+      response.json()
     );
     yield put(getProductsSuccessAction(products));
   } catch (e) {
