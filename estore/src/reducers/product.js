@@ -1,9 +1,21 @@
 import { Map, List, fromJS } from "immutable";
+import {
+  CHANGE_TITLE,
+  CHANGE_CATEGORY,
+  ADD_PRODUCT,
+  ADD_PRODUCT_SUCCESS,
+  ADD_PRODUCT_FAILURE,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT
+} from "../actionTypes/product";
 
 export default function productReducer(
   prevState = Map({
     products: List(),
-    isLoading: false
+    isLoading: false,
+    title: "",
+    category: "",
+    product: null
   }),
   action
 ) {
@@ -34,6 +46,18 @@ export default function productReducer(
         .set(index, Map(productToUpdate));
       console.log("updatedProducts", updatedProducts.toJS());
       return prevState.set("products", updatedProducts);
+    case CHANGE_TITLE:
+      return prevState.set("title", action.title);
+    case CHANGE_CATEGORY:
+      return prevState.set("category", action.category);
+    case ADD_PRODUCT:
+      return prevState.set("isLoading", true);
+    case ADD_PRODUCT_SUCCESS:
+      return prevState.set("isLoading", false).set("product", action.product);
+    case DELETE_PRODUCT:
+      return prevState.set("isLoading", true);
+    case DELETE_PRODUCT_SUCCESS:
+      return prevState.set("isLoading", false);
     default:
       return prevState;
   }

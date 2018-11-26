@@ -1,11 +1,16 @@
 import React, { Component } from "react";
+import "./AddProduct.css";
+import {
+  getCategoryChange,
+  getTitleChange,
+  addProductAction
+} from "../actions/product";
+import { connect } from "react-redux";
 
 class AddProduct extends Component {
   constructor() {
     super();
-    this.state = {
-      title: "dell xps"
-    };
+
     this.handleChange = this.handleChange.bind(this);
     this.setRef = this.setRef.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -13,8 +18,13 @@ class AddProduct extends Component {
   }
 
   handleChange(e) {
-    //console.log(e.target.value);
-    this.setState({ title: e.target.value });
+    if (e.target.name == "title") {
+      this.props.dispatch(getTitleChange(e.target.value));
+    }
+
+    if (e.target.name == "category") {
+      this.props.dispatch(getCategoryChange(e.target.value));
+    }
   }
 
   setRef(ref) {
@@ -25,6 +35,13 @@ class AddProduct extends Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.state, this.priceRef.value);
+    this.props.dispatch(
+      addProductAction({
+        title: this.props.title,
+        category: this.props.category,
+        price: this.priceRef.value
+      })
+    );
   }
 
   render() {
@@ -36,17 +53,50 @@ class AddProduct extends Component {
           SET
         </button>
         <form onSubmit={this.handleSubmit}>
+          <label htmlFor="title">Product Title</label>
           <input
             type="text"
-            value={this.state.title}
+            name="title"
+            value={this.props.title}
             onChange={this.handleChange}
           />
+          <label htmlFor="price">Product Price</label>
           <input type="number" ref={this.setRef} />
-          <button type="submit">Save</button>
+          <label htmlFor="category">Product Category</label>
+          <select
+            name="category"
+            value={this.props.catgory}
+            onChange={this.handleChange}
+          >
+            <option value="">Select Category</option>
+            <option value="ELECTRONICS">ELECTRONICS</option>
+            <option value="GROCERY">GROCERY</option>
+            <option value="CLOTHING">CLOTHING</option>
+          </select>
+
+          <input type="submit" value="Save" />
         </form>
       </div>
     );
   }
 }
 
-export default AddProduct;
+function mapStateToProps(wholeApplicationState) {
+  return {
+    title: wholeApplicationState.productState.get("title"),
+    category: wholeApplicationState.productState.get("category")
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch
+  };
+}
+
+const ConnectedComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default ConnectedComponent(AddProduct);

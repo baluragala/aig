@@ -26,6 +26,10 @@ class ProductListItem extends PureComponent {
   handleClick = () => {
     this.props.onSale(this.props.product.get("id"));
   };
+
+  handleDeleteClick = () => {
+    this.props.onDelete(this.props.product.get("id"));
+  };
   render() {
     console.log("render");
     const { title, stock, price, id } = this.props.product.toJS();
@@ -39,6 +43,7 @@ class ProductListItem extends PureComponent {
         </h2>
         <h4>{price}</h4>
         <button onClick={this.handleClick}>Sell</button>
+        <button onClick={this.handleDeleteClick}>Delete</button>
       </div>
     );
   }

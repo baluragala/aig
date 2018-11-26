@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import ProductListItem from "./ProductListItem";
 import { connect } from "react-redux";
-import { getProductsAction, getSaleAction } from "../actions/product";
+import {
+  getProductsAction,
+  getSaleAction,
+  deleteProductAction
+} from "../actions/product";
 
 class ProductList extends Component {
   constructor() {
@@ -14,6 +18,10 @@ class ProductList extends Component {
     this.props.dispatch(getSaleAction(id));
   };
 
+  handleDeleteClick = id => {
+    this.props.dispatch(deleteProductAction(id));
+  };
+
   _renderProducts() {
     let items = [];
     for (let p of this.props.products) {
@@ -22,6 +30,7 @@ class ProductList extends Component {
           <ProductListItem
             product={p}
             onSale={this.handleSellClick}
+            onDelete={this.handleDeleteClick}
             key={p.get("id")}
           />
         );
